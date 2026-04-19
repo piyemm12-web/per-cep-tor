@@ -15,19 +15,19 @@ class Perceptron:
     def fit(self, X, y):
         n_samples, n_features = X.shape
 
-        # init parameters
+        
         self.weights = np.zeros(n_features)
         self.bias = 0
 
         y_ = np.where(y > 0 , 1, 0) 
 
-        #learn weights
+        
         for _ in range(self.n_iters):
             for idx, x_i in enumerate(X):
                 linear_output = np.dot(x_i, self.weights) + self.bias
                 y_predicted = self.activation_func(linear_output)
 
-                # perceptron update rule
+                
                 update = self.lr * (y_[idx] - y_predicted)
                 self.weights += update * x_i
                 self.bias += update
@@ -38,9 +38,9 @@ class Perceptron:
         y_predicted = self.activation_func(linear_output)
         return y_predicted 
 
-#Testing
+
 if __name__ == "__main__":
-    # Imports
+    
     import matplotlib.pyplot as plt
     from sklearn.model_selection import train_test_split
     from sklearn import datasets
